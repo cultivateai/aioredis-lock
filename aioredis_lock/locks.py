@@ -1,3 +1,4 @@
+# flake8: noqa
 import asyncio
 
 import dataclasses
@@ -153,4 +154,5 @@ class RedisLock:
         :param args: Args to the script
         :returns: bool
         """
-        return bool(await self.pool_or_conn.evalsha(sha, keys, args))
+        keys_and_args = keys + args
+        return bool(await self.pool_or_conn.evalsha(sha, len(keys), *keys_and_args))
