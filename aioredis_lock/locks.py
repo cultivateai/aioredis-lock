@@ -153,4 +153,4 @@ class RedisLock:
         :param args: Args to the script
         :returns: bool
         """
-        return bool(await self.pool_or_conn.evalsha(sha, keys=keys, args=args))
+        return bool(await self.pool_or_conn.evalsha(sha, keys, args))
